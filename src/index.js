@@ -3,11 +3,13 @@ const bodyParser = require('body-parser');
 const { default: mongoose } = require('mongoose')
 const route=require("./routes/route")
 const app= express()
+const dotenv=require("dotenv");
+dotenv.config();
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect("mongodb+srv://Raunak22012001:8329059512%40Ujwal@cluster0.tagnbhk.mongodb.net/group39DataBase", {useNewUrlParser:true})
+mongoose.connect(process.env.DB_CONNECT, {useNewUrlParser:true})
 .then(()=> console.log("MongoDb is connected"))
 .catch(err => console.log(err))
 

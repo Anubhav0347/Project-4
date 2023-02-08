@@ -1,9 +1,8 @@
 const urlModel = require("../models/urlModel");
-const validUrl = require("valid-url");
+// const validUrl = require("valid-url");
 const shortId = require("shortid");
 const baseURL = "http://localhost:3000";
 const redis = require("redis")
-const axios = require("axios")
 const { promisify } = require("util");
 const { json } = require("body-parser");
 
@@ -36,7 +35,6 @@ redisClient.auth("vLNXTDSdL1dHlSQSscsDwvf1WKKPgvxF", function (err) {
 redisClient.on("connect", async function () {
   console.log("Connected to Redis..");
 });
-
 
 
 
@@ -177,8 +175,6 @@ const getUrl = async function (req, res) {
     res.status(500).send({ status: false, message: err.message })
   }
 }
-
-
 
 
 module.exports = { createUrl, getUrl }
